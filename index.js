@@ -8,8 +8,15 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
 // HTML Generator
-const generateHTML = require('./src/generateHTML');
-const { typeParameterDeclaration, assertDeclareModuleExports } = require('@babel/types');
+//const generateHTML = require('./src/generateHTML');
+
+// Colorized fonts and other default lanquage
+const welcomeMsg = `* * * * WELCOME TO YOUR AUTOMATED TEAM PROFILE GENERATOR. * * * *\n`.underline.green;
+const error = `\r\n>> ERR: `.red.bold;
+const noInfoEntered = `No information was entered.`;
+
+// Array to hold team
+const teamArr = [];
 
 // Welcome and instructions
 const welcome = () => {
@@ -19,9 +26,9 @@ const welcome = () => {
             name: 'welcome',
             message: welcomeMsg + '\nYou will be asked to input information about your team, starting with your Team Manager.  \nThese questions will help to complete your customized MyTeam HTML doc. \nLet\'s begin!  Press Enter to continue. \n',
         },
-        
+
     ])
-    .then(addManager)
+        .then(addManager)
 };
 
 // Questions awaiting user input
@@ -36,7 +43,7 @@ const addManager = () => {
                 if (name) {
                     return true;
                 } else {
-                    console.log (error + noInfoEntered + `Please enter the Team Manager\'s name.`);
+                    console.log(error + noInfoEntered + `Please enter the Team Manager\'s name.`);
                     return false;
                 }
             },
@@ -49,7 +56,7 @@ const addManager = () => {
                 if (id) {
                     return true;
                 } else {
-                    ({ name }) => console.log (error + noInfoEntered + `Please enter ${name}\'s employee ID.`);
+                    ({ name }) => console.log(error + noInfoEntered + `Please enter ${name}\'s employee ID.`);
                     return false;
                 }
             },
@@ -76,7 +83,7 @@ const addManager = () => {
                 if (officeNumber) {
                     return true;
                 } else {
-                    ({ name }) => console.log (error + noInfoEntered + `Please enter ${name}\'s office number.`);
+                    ({ name }) => console.log(error + noInfoEntered + `Please enter ${name}\'s office number.`);
                     return false;
                 }
             },
@@ -88,12 +95,12 @@ const addManager = () => {
             choices: ['Yes', 'No'],
         },
     ])
-    .then(answers => {
-        const {name, id, email, officeNumber} = answers;
-        const manager = new Manager(name, id, email, officeNumber);
-        teamArr.push(manager);
-        (answers.queryMoreReports === 'Yes') ? addReports(): generateHTML(teamArr);
-    })
+        .then(answers => {
+            const { name, id, email, officeNumber } = answers;
+            const manager = new Manager(name, id, email, officeNumber);
+            teamArr.push(manager);
+            (answers.queryMoreReports === 'Yes') ? addReports() : generateHTML(teamArr);
+        })
 };
 
 // Direct report questions
@@ -113,7 +120,7 @@ const addReports = () => {
                 if (nameInput) {
                     return true;
                 } else {
-                    ({ title }) => console.log (error + noInfoEntered + `Please enter the ${title}\'s name.`);
+                    ({ title }) => console.log(error + noInfoEntered + `Please enter the ${title}\'s name.`);
                     return false;
                 }
             },
@@ -126,7 +133,7 @@ const addReports = () => {
                 if (id) {
                     return true;
                 } else {
-                    ({ name }) => console.log (error + noInfoEntered + `Please enter ${name}\'s employee ID.`);
+                    ({ name }) => console.log(error + noInfoEntered + `Please enter ${name}\'s employee ID.`);
                     return false;
                 }
             },
@@ -154,7 +161,7 @@ const addReports = () => {
                 if (github) {
                     return true;
                 } else {
-                    ({ name }) => console.log (error + noInfoEntered + `Please enter ${name}\'s GitHub username.`);
+                    ({ name }) => console.log(error + noInfoEntered + `Please enter ${name}\'s GitHub username.`);
                     return false;
                 }
             },
@@ -179,20 +186,20 @@ const addReports = () => {
             choices: ['Yes', 'No'],
         },
     ])
-    .then(answers => {
-        if (answers.title === 'Engineer') {
-            const {name, id, email, github} = answers;
-            const engineer = new Engineer (name, id, email, github);
-            teamArr.push(engineer);
+        .then(answers => {
+            if (answers.title === 'Engineer') {
+                const { name, id, email, github } = answers;
+                const engineer = new Engineer(name, id, email, github);
+                teamArr.push(engineer);
 
 
-        } else if (answers.title === 'Intern') {
-            const {name, id, email, school} = answers;
-            const intern = new Intern (name, id, email, school);
-            teamArr.push(intern);
-        };
-        (answers.queryMoreReports === 'Yes') ? addReports() : generateHTML(teamArr);
-    })
+            } else if (answers.title === 'Intern') {
+                const { name, id, email, school } = answers;
+                const intern = new Intern(name, id, email, school);
+                teamArr.push(intern);
+            };
+            (answers.queryMoreReports === 'Yes') ? addReports() : generateHTML(teamArr);
+        })
 };
 
 // Function to initialize app
