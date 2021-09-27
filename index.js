@@ -8,7 +8,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
 // HTML Generator
-//const generateHTML = require('./src/generateHTML');
+const generateHTML = require('./src/generateHTML');
 
 // Colorized fonts and other default lanquage
 const welcomeMsg = `* * * * WELCOME TO YOUR AUTOMATED TEAM PROFILE GENERATOR. * * * *\n`.underline.green;

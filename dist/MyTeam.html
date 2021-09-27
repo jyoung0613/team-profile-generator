@@ -1,43 +1,4 @@
-const fs = require('fs');
-const index = require('../index');
-const colors = require('colors');
 
-// Generate HTML for MyTeam
-const generate = (teamArr) => {
-    // Functions to create new arrays of employee card HTML.  Grouping employees by role.
-    function genManagers(employee) {
-        for (i = 0; i < employee.length; i++) {
-            if (employee[i].role === "Manager") {
-                managerCardsHTML.push(employee[i].managerCard);
-            }
-        }
-    }
-    function genEngineers(employee) {
-        for (i = 0; i < employee.length; i++) {
-            if (employee[i].role === "Engineer") {
-                engineerCardsHTML.push(employee[i].engineerCard);
-            }
-        }
-    }
-    function genInterns(employee) {
-        for (i = 0; i < employee.length; i++) {
-            if (employee[i].role === "Intern") {
-                internCardsHTML.push(employee[i].internCard);
-            }
-        }
-    }
-
-    // Arrays to hold HTML for each employee card by role.
-    let managerCardsHTML = [];
-    let engineerCardsHTML = [];
-    let internCardsHTML = [];
-
-    // Generate arrays of employee cards
-    genManagers(teamArr);
-    genEngineers(teamArr);
-    genInterns(teamArr);
-
-    return `
     <!doctype html>
         <html lang="en">
         
@@ -69,7 +30,21 @@ const generate = (teamArr) => {
             <main>
                 <section class="container">
                     <div class="row">
-                        ${managerCardsHTML.join(" ")}
+                        <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
+                <div class='card manager'>
+                    <div class='card-body'>
+                        <h4 class='card-title text-center'>John A.</h4>
+                        <h5 class='card-title text-center'><i class="fas fa-tasks"></i>&nbsp Manager</h5>
+                        <div class='card'>
+                            <ul class='list-group list-group-flush'>
+                                <li class='list-group-item'>EMPLOYEE ID:&nbsp 1234</li>
+                                <li class='list-group-item'>EMAIL:&nbsp <a href="mailto:john.a@email.com">john.a@email.com</a></li>
+                                <li class='list-group-item'>OFFICE NUMBER:&nbsp 555-555-1234</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
                     </div>
                 </section>
                 
@@ -77,20 +52,24 @@ const generate = (teamArr) => {
                 
                 <section class="container">
                     <div class="row">
-                        ${internCardsHTML.join(" ")}
+                        <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
+                <div class='card intern'>
+                    <div class='card-body'>
+                    <h4 class='card-title text-center'>John C.</h4>
+                    <h5 class='text-center'><i class="fas fa-user-graduate"></i>&nbsp Intern</h5>
+                        <div class='card'>
+                            <ul class='list-group list-group-flush'>
+                                <li class='list-group-item'>EMPLOYEE ID:&nbsp 3456</li>
+                                <li class='list-group-item'>EMAIL:&nbsp <a href="mailto:john.c@email.com">john.c@email.com</a></li>
+                                <li class='list-group-item'>SCHOOL:&nbsp University of Utah</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
                     </div>
                 </section>
                 
             </main>
         </body>
-    </html>`
-}
-
-const generateHTML = (teamArr) => {
-    fs.writeFile('./dist/MyTeam.html', generate(teamArr), function(err, result) {
-        (err) ? console.log('error', err): console.log(`\r\nSuccessfully wrote MyTeam.html to your dist folder.`.underline.green);
-        }
-    );
-};
-
-module.exports = generateHTML;
+    </html>
