@@ -1,11 +1,9 @@
 :root {
     --c-blue: blue;
     --c-lightblue: lightblue;
-    --c-lightgreen: lightgreen;
     --c-dblue: darkblue;
     --c-black: black;
-    --c-green: green;
-    --c-dred: darkred;
+    --c-dred: rgb(233, 62, 62);
     --c-white: white;
     --c-lightgrey: lightgrey;
   }

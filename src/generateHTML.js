@@ -73,11 +73,19 @@ const generate = (teamArr) => {
                     </div>
                 </section>
                 
-                <hr class="mt-1 mb-4"/>
+                <hr>
                 
                 <section class="container">
                     <div class="row">
                         ${internCardsHTML.join(" ")}
+                    </div>
+                </section>
+
+                <hr>
+
+                <section class="container">
+                    <div class="row">
+                        ${engineerCardsHTML.join(" ")}
                     </div>
                 </section>
                 
