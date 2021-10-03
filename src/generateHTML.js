@@ -58,7 +58,7 @@ const generate = (teamArr) => {
         </head>
         
         <body>
-            <header class="jumbotron">
+            <header class="jumbotron bg-danger">
                 <div class="container">
                     <div class="row align-self-center">
                         <h1 class="text-center">My Team</h1>
@@ -68,16 +68,22 @@ const generate = (teamArr) => {
             
             <main>
                 <section class="container">
-                    <div class="row">
-                        ${managerCardsHTML.join(" ")}
+                    <div class="column">
+                        <div class="row">
+                            ${managerCardsHTML.join(" ")}
+                        </div>
                     </div>
-                </section>
                 
-                <hr class="mt-1 mb-4"/>
-                
-                <section class="container">
-                    <div class="row">
-                        ${internCardsHTML.join(" ")}
+                    <div class="column">
+                        <div class="row">
+                            ${engineerCardsHTML.join(" ")}
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="row">
+                            ${internCardsHTML.join(" ")}
+                        </div>
                     </div>
                 </section>
                 
