@@ -14,10 +14,10 @@
   - [Questions](#Questions)
 
   ## Installation
-  * install node js 
-  * clone code from repo 
-  * open code and type npm i into your command line 
-  * next type node index to initiate the questions
+  * Install node js 
+  * Clone code from repo 
+  * Open code and type npm i into your command line 
+  * Next type node index to initiate the questions
 
   ## Usage
   Node built program setup to ask users for Employee Team details and then generate a Team Profile page with contact details for your team.
