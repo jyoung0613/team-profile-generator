@@ -73,7 +73,7 @@ const generate = (teamArr) => {
                     </div>
                 </section>
                 
-                <hr>
+                <hr class="mt-1 mb-4"/>
                 
                 <section class="container">
                     <div class="row">
@@ -81,7 +81,7 @@ const generate = (teamArr) => {
                     </div>
                 </section>
 
-                <hr>
+                <hr class="mt-1 mb-4"/>
 
                 <section class="container">
                     <div class="row">
