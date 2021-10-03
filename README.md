@@ -21,7 +21,6 @@
 
   ## Usage
   Node built program setup to ask users for Employee Team details and then generate a Team Profile page with contact details for your team
-  ![alt text](./assets/images/My-Team-Profile-Demo.mp4)
   ![alt text](./assets/images/My-Team-Profile-Screenshot.png)
   ![alt text](./assets/images/My-Team-Profile-Screenshot-tests-pass.png)
   
